@@ -2,6 +2,8 @@
 <html lang="uk" data-root="../../">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'self' https://formsubmit.co; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Кейс Київська опера — SMM TIME</title>
 <meta name="description" content="Контент-стратегія для Київської опери: взаємодія з Reels +9244% за 1,5 року.">
@@ -16,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&display=swap">
-<link rel="stylesheet" href="../../assets/style.css?v=202610232028">
+<link rel="stylesheet" href="../../assets/style.css?v=202610232043">
 </head>
 <body>
 <!-- ======================= CASE: OPERA ======================= -->
@@ -97,10 +99,10 @@
     <div class="pop-form">
       <form class="lead-form" novalidate>
         <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px">
-        <input class="pfield" id="p-name" name="name" autocomplete="name" aria-label="Ім’я та прізвище" placeholder="тут буде твоє ім’я та прізвище">
-        <input class="pfield" id="p-svc" name="service" aria-label="Послуга" placeholder="яка послуга вас цікавить?">
-        <input class="pfield" id="p-mail" name="email" type="email" autocomplete="email" aria-label="Емейл" placeholder="тут має бути твій емейл">
-        <textarea class="pfield" id="p-msg" name="msg" aria-label="Повідомлення" placeholder="є питання чи побажання? пиши!"></textarea>
+        <input class="pfield" id="p-name" name="name" maxlength="100" autocomplete="name" aria-label="Ім’я та прізвище" placeholder="тут буде твоє ім’я та прізвище">
+        <input class="pfield" id="p-svc" name="service" maxlength="150" aria-label="Послуга" placeholder="яка послуга вас цікавить?">
+        <input class="pfield" id="p-mail" name="email" type="email" maxlength="150" autocomplete="email" aria-label="Емейл" placeholder="тут має бути твій емейл">
+        <textarea class="pfield" id="p-msg" name="msg" maxlength="2000" aria-label="Повідомлення" placeholder="є питання чи побажання? пиши!"></textarea>
         <p class="err" aria-live="polite"></p>
         <button class="psend" type="submit">Надіслати</button>
       </form>
@@ -117,6 +119,6 @@
   </div>
 </div>
 
-<script src="../../assets/site.js?v=202610232028"></script>
+<script src="../../assets/site.js?v=202610232043"></script>
 </body>
 </html>

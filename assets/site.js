@@ -1,4 +1,5 @@
 (function(){
+  var T0=Date.now();
   var ROOT=document.documentElement.getAttribute("data-root")||"";
   var ROUTES={"home": "", "services": "poslugy/", "smm": "poslugy/kompleksnyi-smm/", "target": "poslugy/tarhetovana-reklama/", "mascot": "poslugy/brend-maskot/", "audit": "poslugy/smm-audyt/", "education": "poslugy/navchannia-ta-konsultatsii/", "expertise": "poslugy/rozpakuvannia-ekspertnosti/", "cases": "kejsy/", "okpsy": "kejsy/okpsy-pharma/", "dyvys": "kejsy/dyvys-ukrainske/", "minka": "kejsy/minka-beauty/", "evi": "kejsy/evi/", "karabas": "kejsy/karabas/", "opera": "kejsy/kyivska-opera/", "philharmonic": "kejsy/natsionalna-filarmoniia/", "khpi": "kejsy/khpi/", "dnipro": "kejsy/dnipro-biudzhet-uchasti/", "toys": "kejsy/insta-mahazyn-ihrashok/", "telelikar": "kejsy/telelikar/", "cheese": "kejsy/syrni-tsukerky/", "mascots": "kejsy/maskoty-minka-okpsy/", "symphony": "kejsy/symphony-rock-suknia/", "contacts": "kontakty/"};
   function url(id){return (ROOT+(ROUTES[id]||""))||"./"}
@@ -142,6 +143,7 @@
     form.addEventListener('submit',function(e){
       e.preventDefault();
       var name=form.name.value.trim(),mail=form.email.value.trim(),msg=form.msg.value.trim(),svc=form.service?form.service.value.trim():'';
+      if(Date.now()-T0<3000||(form._honey&&form._honey.value)){form.hidden=true;form.parentNode.querySelector('.ok').hidden=false;return}
       if(!name){err.textContent='Вкажіть, будь ласка, ім’я.';form.name.focus();return}
       if(!/^\S+@\S+\.\S+$/.test(mail)){err.textContent='Перевірте емейл: він має виглядати як name@mail.com.';form.email.focus();return}
       err.textContent='';
