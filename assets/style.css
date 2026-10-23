@@ -445,3 +445,5 @@ body:has(.pop:not([hidden])) .tg-float{display:none}
 @media (max-width:1100px) and (min-width:761px){.team-side{grid-template-columns:auto 1fr;align-items:end}.team-l{align-self:center}}
 .tm{padding:max(16px, calc(24 * var(--u)))}
 .tm h3{font-size:max(15px, calc(21 * var(--u)))}
+.who{transition:background-color .3s ease,transform .3s ease,box-shadow .3s ease}
+@media (hover:hover){.who:hover{background:var(--accent);transform:translateY(-4px);box-shadow:0 10px 24px rgba(18,34,45,.14)}}
