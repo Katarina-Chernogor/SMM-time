@@ -134,10 +134,10 @@
     });
   })();
 
-  /* lead forms (contacts page + pop-up): sent to Lesia's e-mail through FormSubmit (formsubmit.co).
-     If sending fails, the visitor gets a ready-made e-mail as a fallback. */
+  /* lead forms (contacts page + pop-up): sent to a Make webhook that posts them to the Telegram group «Заявки з сайту smm time».
+     If sending fails, the visitor gets a ready-made e-mail to Lesia as a fallback. */
   var LEAD_EMAIL='gaydash.lesia@smm-time.com';
-  var LEAD_ENDPOINT='https://formsubmit.co/ajax/'+LEAD_EMAIL;
+  var LEAD_ENDPOINT='https://hook.eu2.make.com/fej79qds67zdai6c5fh7ut7xylc3gvdw';
   function wire(form){
     var box=form.parentNode,sent=box.querySelector('.sent'),ok=box.querySelector('.ok'),err=form.querySelector('.err'),btn=form.querySelector('[type=submit]'),letter='';
     form.addEventListener('submit',function(e){
@@ -150,11 +150,9 @@
       letter='Ім’я: '+name+'\nЕмейл: '+mail+(svc?'\nПослуга: '+svc:'')+(msg?'\n\n'+msg:'');
       if(form._honey&&form._honey.value){form.hidden=true;ok.hidden=false;return}
       var label=btn.textContent;btn.disabled=true;btn.textContent='Надсилаємо…';
-      fetch(LEAD_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body:JSON.stringify({"Ім’я":name,"Емейл":mail,"Послуга":svc||'—',"Повідомлення":msg||'—',"Сторінка":location.href,
-          _subject:'Заявка з сайту SMM TIME'+(svc?' — '+svc:''),_replyto:mail,_template:'table',_captcha:'false'})})
-      .then(function(r){return r.json()}).then(function(d){
-        if(d&&(d.success===true||d.success==='true')){form.reset();form.hidden=true;ok.hidden=false}
+      fetch(LEAD_ENDPOINT,{method:'POST',body:new URLSearchParams({name:name,email:mail,service:svc,msg:msg,page:location.href})})
+      .then(function(r){
+        if(r.ok){form.reset();form.hidden=true;ok.hidden=false}
         else throw new Error('not sent');
       }).catch(function(){
         sent.querySelector('.s-mail').href='mailto:'+LEAD_EMAIL+'?subject='+encodeURIComponent('Заявка з сайту SMM TIME'+(svc?' — '+svc:''))+'&body='+encodeURIComponent(letter);
